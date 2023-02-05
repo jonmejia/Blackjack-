@@ -14,32 +14,37 @@ for suit in suits:
         n -=1
 
 #shuffles cards
-def shuffle(deck):
-    random.shuffle(deck)
+def shuffle():
+    random.shuffle(cards)
 
 #deals cards
-def deal(deck, cards = 1):
+def deal(number_of_cards = 1):
     dealt_cards = []
-    while cards > 0:
-        card = deck.pop()
+    while number_of_cards > 0:
+        card = cards.pop()
         dealt_cards.append(card)
-        cards -= 1
+        number_of_cards -= 1
     return dealt_cards
 
-shuffle(cards)
-hand = deal(cards,2)
-card = hand[0]
-rank = card[0]
+shuffle()
 
-if rank == "Ace":
-    value = 11
-elif rank == "Jack" or rank == "Queen" or rank == "King":
-    value = 10
-else:
-    value = int(rank)
-print(f"hand: {hand}")
-print(f"card: {card}")
-print(f"rank: {rank}")
-print(f"value: {value}")
+card = deal(1)[0]
+
+# hand = deal(2)
+# card = hand[0]
+# rank = card[0]
+
+# if rank == "Ace":
+#     value = 11
+# elif rank == "Jack" or rank == "Queen" or rank == "King":
+#     value = 10
+# else:
+#     value = int(rank)
+
+# rank_dict={ "rank": rank, "value":value}
+
+# print(f"hand: {hand}")
+# print(f"card: {card}")
+# print(rank_dict["rank"], rank_dict["value"])
 
 

@@ -4,7 +4,21 @@ cards = []
 
 suits = ["Hearts", "Spades", "Diamonds", "Clubs"]
 
-ranks = ["Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"]
+ranks = [
+    {"rank":"Ace","value":11},
+    {"rank":"1","value":1},
+    {"rank":"2","value":2},
+    {"rank":"3","value":3},
+    {"rank":"4","value":4},
+    {"rank":"5","value":5},
+    {"rank":"6","value":6},
+    {"rank":"7","value":7},
+    {"rank":"8","value":8},
+    {"rank":"9","value":9},
+    {"rank":"Jack","value":10},
+    {"rank":"Queen","value":10},
+    {"rank":"King","value":10},
+    ]
 
 #loops through suits and ranks to build a deck of cards
 for suit in suits:
@@ -29,7 +43,7 @@ def deal(number_of_cards = 1):
 shuffle()
 
 card = deal(1)[0]
-
+print((card[0]["value"]))
 # hand = deal(2)
 # card = hand[0]
 # rank = card[0]

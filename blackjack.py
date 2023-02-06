@@ -1,4 +1,5 @@
 import random
+
 class Card:
     def __init__ (self,suit,rank):
         self.suit = suit
@@ -46,6 +47,46 @@ class Deck:
                 dealt_cards.append(card)
                 number_of_cards -= 1
         return dealt_cards
+    
+class Hand:
+    def __init__(self,dealer = False):
+        self.cards = []
+        self.value = 0
+        self.dealer = dealer
 
-card1 = Card("Hearts", {"rank":"King","value":10})
-print(card1)
+    def add_card(self, card_list):
+        self.cards.extend(card_list)
+    
+    def calculate_value(self):
+        self.value = 0
+        has_ace = False
+        
+        for card in self.cards:
+          card_value = int(card.rank["value"])
+          self.value += card_value
+          if card.rank["rank"] == "Ace":
+              has_ace = True
+        if has_ace == True and self.value >21:
+            self.value -=10
+
+    def get_value(self):
+        self.calculate_value()
+        return self.value
+    def is_blackjack(self):
+        return self.get_value() == 21
+    def display(self):
+        print(f'''{"Dealers" if self.dealer else "Your"} hand:''')
+        for card in self.cards:
+            print(card)
+        if self.dealer == False:
+            print("Value:",self.get_value())
+       
+
+
+
+deck = Deck()
+deck.shuffle()
+
+hand = Hand()
+hand.add_card(deck.deal(3))
+hand.display()
